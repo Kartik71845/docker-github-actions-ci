@@ -18,5 +18,8 @@ jobs:
         run: docker images
 
       - name: Run Docker container
-        run: docker run --rm --name ci_container ci_image
+        run: |
+          echo "Starting container..."
+          docker run --rm ci_image
+          echo "Container finished"
       
