@@ -1,0 +1,22 @@
+name: Docker CI workflow 
+on: 
+  push: 
+    branches:  
+      - main
+
+jobs: 
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t ci_image .
+
+      - name: List Docker images
+        run: docker images
+
+      - name: Run Docker container
+        run: docker run --name ci_container ci_image
+      
